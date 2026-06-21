@@ -1,5 +1,24 @@
 # Delete Unused AWS EBS Snapshots Automatically Using Terraform, and AWS Lambda
 
+Business Problem
+
+in real-world companies, they crete snapshot of volume or they create golden image. afterthat they forget to delte snapshot and it silently occurs bills. 
+
+in this article, we tackle then prblem of creating snapshot of volume and then forget to delete. 
+
+Solution:
+
+we can use eventbridge scheduler, lambda to tackel then problem. but in this article, we use only lambda to run manally to delte unused snapshot. 
+
+Tech Stack:
+
+terraform
+lambda 
+Prerequsites:
+aws 
+terraform 
+
+
 # Launch an EC2 Instance:
 
 

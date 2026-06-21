@@ -1,5 +1,39 @@
-# terraform-aws-lambda-snapshot
+# Delete Unused AWS EBS Snapshots Automatically Using Terraform, and AWS Lambda
 
+# Launch an EC2 Instance:
+
+
+
+
+<img width="1600" height="900" alt="aws lambda 7 " src="https://github.com/user-attachments/assets/70195d33-ea0c-4b77-a5ad-a52362403585" />
+
+
+<img width="1600" height="900" alt="aws lambda 8 " src="https://github.com/user-attachments/assets/cfbaa6a1-f23a-4f68-9801-421f5bcd8fff" />
+
+<img width="1600" height="900" alt="aws lambda 9" src="https://github.com/user-attachments/assets/205604e8-b990-4305-8b76-89447d5d5187" />
+
+# 2. Create a Snapshot of its Root Volume:
+<img width="1600" height="900" alt="aws lambda 10 " src="https://github.com/user-attachments/assets/0350eca3-53b0-4526-b513-956926bb1b0a" />
+
+<img width="1600" height="900" alt="aws lambda 12" src="https://github.com/user-attachments/assets/9eb1dac2-6bb4-41f1-b201-de06b4c73aeb" />
+
+<img width="1600" height="900" alt="aws lambda 13" src="https://github.com/user-attachments/assets/d1c1024f-f373-410b-8217-4f08252bf74b" />
+
+
+<img width="1600" height="900" alt="aws lambda 15" src="https://github.com/user-attachments/assets/9c43ec01-fbe6-413d-90ea-be9949faddcf" />
+
+
+
+# 3. Terminate the EC2 Instance (Makes Snapshot Stale):
+
+
+<img width="1600" height="900" alt="aws lambda 16" src="https://github.com/user-attachments/assets/4b679345-938a-44f6-b65f-fc31dab9e45c" />
+
+<img width="1600" height="900" alt="aws lambda 18" src="https://github.com/user-attachments/assets/b969d968-fb4d-44bd-a403-2afc264f5754" />
+
+
+
+<img width="1600" height="900" alt="aws lambda 19" src="https://github.com/user-attachments/assets/3a8e704f-5f53-4600-bc39-a8e3379ff813" />
 
 
 

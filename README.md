@@ -10,6 +10,15 @@ Solution:
 
 we can use eventbridge scheduler, lambda to tackel then problem. but in this article, we use only lambda to run manally to delte unused snapshot. 
 
+
+what we will do?
+
+we will create a lambda function. it will delte snapshot when we click button of lambda. we can use evetnbridge scheudle that is better approach. but for simplicty we only are using lambda.
+what is ebs volume? 
+
+
+what is snapshot?
+
 Tech Stack:
 
 terraform
@@ -32,6 +41,11 @@ terraform
 <img width="1600" height="900" alt="aws lambda 9" src="https://github.com/user-attachments/assets/205604e8-b990-4305-8b76-89447d5d5187" />
 
 # 2. Create a Snapshot of its Root Volume:
+we can see when create ec2, aws crataes ebs volume for us. 
+
+click create snapshot, 
+select volume 
+
 <img width="1600" height="900" alt="aws lambda 10 " src="https://github.com/user-attachments/assets/0350eca3-53b0-4526-b513-956926bb1b0a" />
 
 <img width="1600" height="900" alt="aws lambda 12" src="https://github.com/user-attachments/assets/9eb1dac2-6bb4-41f1-b201-de06b4c73aeb" />
@@ -45,6 +59,11 @@ terraform
 
 # 3. Terminate the EC2 Instance (Makes Snapshot Stale):
 
+click termante the instance. 
+
+Note: when we create or delete ec2 instance, aws creates volume when we create ec2 and deltes volume when we dele ec2. 
+
+so we have dleted ec2, you can see volume got deeleed along with it. Now our snapshot is stale or unused. 
 
 <img width="1600" height="900" alt="aws lambda 16" src="https://github.com/user-attachments/assets/4b679345-938a-44f6-b65f-fc31dab9e45c" />
 
@@ -63,7 +82,9 @@ terraform
 
 <img width="1600" height="900" alt="aws lambda 22" src="https://github.com/user-attachments/assets/3e899be1-13b9-4aa4-b016-75e9a1fe9800" />
 
+this code creates:
 
+lambda function.
 
 
 main.tf
@@ -209,6 +230,7 @@ def lambda_handler(event, context):
 
 
 # 5. result
+you can see our lambda function has been created. it has persmission to delte snapshot and generte cloduwatch logs. because we mentioned in iam policy . 
 
 <img width="1600" height="900" alt="aws lambda 24" src="https://github.com/user-attachments/assets/0cc1ed4d-cae3-4b6a-8cda-0b91b0502dec" />
 
@@ -216,6 +238,13 @@ def lambda_handler(event, context):
 
 
 # 6. test
+
+open test tab. 
+event name: EBSStateSnapshotEvent
+click test
+
+you can see our lambda function has run and it automatically delted stale snapshot. 
+
 
 <img width="1600" height="900" alt="aws lambda 25" src="https://github.com/user-attachments/assets/0aa69c1b-d78c-408a-8805-927200024863" />
 
@@ -231,4 +260,5 @@ def lambda_handler(event, context):
 <img width="1600" height="900" alt="aws lambda 29" src="https://github.com/user-attachments/assets/87cc485b-9d69-45f5-958d-da39b71b4c8b" />
 
 
+# concnlusoin
 

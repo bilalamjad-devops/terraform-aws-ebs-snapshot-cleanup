@@ -82,15 +82,15 @@ resource "aws_iam_role_policy" "ebs_snapshot_cleaner_policy" {
 data "archive_file" "ebs_snapshot_cleaner_zip" {
   type        = "zip"
   source_dir  = "${path.module}/python/" # Path to your Lambda function's Python code
-  output_path = "${path.module}/python/lambda_function.zip" # Output zip file name
+  output_path = "${path.module}/python/delete_unused_snapshots.zip" # Output zip file name
 }
 
 # --- Lambda Function ---
 # Defines the AWS Lambda function that runs the snapshot cleanup logic.
-resource "aws_lambda_function" "ebs_snapshot_cleaner_function" {
+resource "aws_delete_unused_snapshots" "ebs_snapshot_cleaner_function" {
   function_name    = "DeleteStaleEBSSnapshot" # Name of the Lambda function in AWS
   role             = aws_iam_role.ebs_snapshot_cleaner_role.arn
-  handler          = "lambda_function.lambda_handler" # Entry point (file.function_name)
+  handler          = "delete_unused_snapshots.lambda_handler" # Entry point (file.function_name)
   runtime          = "python3.9" # Python runtime version
   timeout          = 60          # Function timeout in seconds (1 minute) for lab testing
   memory_size      = 128 # Memory allocated to the function (MB)
@@ -107,6 +107,7 @@ resource "aws_lambda_function" "ebs_snapshot_cleaner_function" {
 
 
 python/delete_unused_snapshots.py
+
 ```python
 import boto3
 

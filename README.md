@@ -36,8 +36,13 @@
 <img width="1600" height="900" alt="aws lambda 19" src="https://github.com/user-attachments/assets/3a8e704f-5f53-4600-bc39-a8e3379ff813" />
 
 
+# 4. Terraform Init, plan
 
 
+<img width="1600" height="900" alt="aws lambda 21" src="https://github.com/user-attachments/assets/c4ae3564-bc59-4f08-b139-a1f13e987309" />
+
+
+<img width="1600" height="900" alt="aws lambda 22" src="https://github.com/user-attachments/assets/3e899be1-13b9-4aa4-b016-75e9a1fe9800" />
 
 
 
@@ -181,4 +186,30 @@ def lambda_handler(event, context):
                     ec2.delete_snapshot(SnapshotId=snapshot_id)
                     print(f"Deleted EBS snapshot {snapshot_id} as its associated volume was not found.")
 ```
+
+
+
+# 5. result
+
+<img width="1600" height="900" alt="aws lambda 24" src="https://github.com/user-attachments/assets/0cc1ed4d-cae3-4b6a-8cda-0b91b0502dec" />
+
+
+
+
+# 6. test
+
+<img width="1600" height="900" alt="aws lambda 25" src="https://github.com/user-attachments/assets/0aa69c1b-d78c-408a-8805-927200024863" />
+
+<img width="1600" height="900" alt="aws lambda 26" src="https://github.com/user-attachments/assets/ffcc2450-148a-4304-ae85-40f42be7e79a" />
+
+<img width="1600" height="900" alt="aws lambda 27" src="https://github.com/user-attachments/assets/1e8a6d20-8c83-4c2d-9ff1-b7b415f9a195" />
+
+# 7. tf destroy
+
+<img width="1600" height="900" alt="aws lambda 28" src="https://github.com/user-attachments/assets/459099f5-502d-4b6a-a438-3ba1db0e5cad" />
+
+
+<img width="1600" height="900" alt="aws lambda 29" src="https://github.com/user-attachments/assets/87cc485b-9d69-45f5-958d-da39b71b4c8b" />
+
+
 

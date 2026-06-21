@@ -23,6 +23,8 @@ terraform {
 # Configuration options
 provider "aws" {
   region     = "ap-south-1"
+  access_key = "paste-your-access-key"     # 👈 paste your access key
+  secret_key = "paste-your-secret-key"     # 👈 paste your secret key 
 }
 
 # --- IAM Role for Lambda Function ---
@@ -82,15 +84,15 @@ resource "aws_iam_role_policy" "ebs_snapshot_cleaner_policy" {
 data "archive_file" "ebs_snapshot_cleaner_zip" {
   type        = "zip"
   source_dir  = "${path.module}/python/" # Path to your Lambda function's Python code
-  output_path = "${path.module}/python/delete_unused_snapshots.zip" # Output zip file name
+  output_path = "${path.module}/python/lambda_function.zip" # Output zip file name
 }
 
 # --- Lambda Function ---
 # Defines the AWS Lambda function that runs the snapshot cleanup logic.
-resource "aws_delete_unused_snapshots" "ebs_snapshot_cleaner_function" {
+resource "aws_lambda_function" "ebs_snapshot_cleaner_function" {
   function_name    = "DeleteStaleEBSSnapshot" # Name of the Lambda function in AWS
   role             = aws_iam_role.ebs_snapshot_cleaner_role.arn
-  handler          = "delete_unused_snapshots.lambda_handler" # Entry point (file.function_name)
+  handler          = "lambda_function.lambda_handler" # Entry point (file.function_name)
   runtime          = "python3.9" # Python runtime version
   timeout          = 60          # Function timeout in seconds (1 minute) for lab testing
   memory_size      = 128 # Memory allocated to the function (MB)
